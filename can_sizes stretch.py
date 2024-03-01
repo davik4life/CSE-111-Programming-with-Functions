@@ -25,10 +25,9 @@ def main ():
         
         storage_efficiency = compute_storage_efficiency(can_radius, can_height)
         cost_efficiency = compute_cost_efficiency(can_radius, can_height, can_cost_per_can)
-        # if storage_effeciency > best_storage:
-        #     best_storage = storage_effeciency
+
         print(f"{can_names} {storage_efficiency:.2f} {cost_efficiency:.0f}")    
-        # print(f"{cost_efficiency:.2f}")
+
         
         # Find the best storage effeciency
         if storage_efficiency > best_storage:
@@ -70,8 +69,10 @@ def compute_storage_efficiency(radius, height):
     This is the function that computes the storage efficiency.
     and returns the value.
     """
-    volume = compute_volume(radius, height) # Calling the function to calculate volume.
-    surface_area = compute_surface_area(radius, height) # Calling the function to calculate surface_area.
+    # Calling the function to calculate volume.
+    volume = compute_volume(radius, height) 
+    # Calling the function to calculate surface_area.
+    surface_area = compute_surface_area(radius, height) 
 
     storage_efficiency = volume / surface_area
     
