@@ -8,6 +8,12 @@ def main():
     words = ["boy", "girl", "cat", "dog", "bird", "house"]
     
     words = random.choice(words)
+    print(make_sentence(1, "past"))
+    print(make_sentence(1, "present"))
+    print(make_sentence(1, "future"))
+    print(make_sentence(2, "past"))
+    print(make_sentence(2, "present"))
+    print(make_sentence(2, "future"))
 def make_sentence(quantity, tense):
     """Build and return a sentence with three words:
     a determiner, a noun, and a verb. The grammatical
@@ -16,6 +22,28 @@ def make_sentence(quantity, tense):
     quantity and tense of the verb will match the number
     and tense in the quantity and tense parameters.
     """
+    if quantity == 1:
+        determiner = get_determiner(1)
+        noun = get_noun(quantity)
+    else:
+        determiner = get_determiner(quantity)
+        noun = get_noun(quantity)
+        # Get a list of verbs
+    
+    if tense == "past":
+        verb = get_verb(quantity, "past")
+    elif tense == "present" and quantity == 1:
+        verb = get_verb(1, "present")
+    elif tense == "present":
+        verb = get_verb(quantity, "present")
+    elif tense == "future":
+        verb = get_verb(quantity, "future")
+        
+    return f"{determiner.capitalize()} {noun} {verb}."
+        
+        
+        
+        
 
 def get_determiner(quantity):
     """Return a randomly chosen determiner. A determiner is
@@ -57,22 +85,64 @@ def get_noun(quantity):
             the returned noun is single or plural.
     Return: a randomly chosen noun.
     """
-    
-def get_verb(quantity, verb):
-    """Return a randomly chosen noun.
-    If quantity is 1, this function will
-    return one of these ten single nouns:
-        "bird", "boy", "car", "cat", "child",
-        "dog", "girl", "man", "rabbit", "woman"
-    Otherwise, this function will return one of
-    these ten plural nouns:
-        "birds", "boys", "cars", "cats", "children",
-        "dogs", "girls", "men", "rabbits", "women"
+    if quantity == 1:
+        single = [ "bird", "boy", "car", "cat", "child",
+        "dog", "girl", "man", "rabbit", "woman"]
+        single_noun = random.choice(single)
+        return single_noun
+    else:
+        plural = [ "birds", "boys", "cars", "cats", "children",
+        "dogs", "girls", "men", "rabbits", "women"]
+        plural_nouns = random.choice(plural)
+        return plural_nouns    
+def get_verb(quantity, tense):
+    """Return a randomly chosen verb. If tense is "past",
+    this function will return one of these ten verbs:
+        "drank", "ate", "grew", "laughed", "thought",
+        "ran", "slept", "talked", "walked", "wrote"
+    If tense is "present" and quantity is 1, this
+    function will return one of these ten verbs:
+        "drinks", "eats", "grows", "laughs", "thinks",
+        "runs", "sleeps", "talks", "walks", "writes"
+    If tense is "present" and quantity is NOT 1,
+    this function will return one of these ten verbs:
+        "drink", "eat", "grow", "laugh", "think",
+        "run", "sleep", "talk", "walk", "write"
+    If tense is "future", this function will return one of
+    these ten verbs:
+        "will drink", "will eat", "will grow", "will laugh",
+        "will think", "will run", "will sleep", "will talk",
+        "will walk", "will write"
 
-    Parameter
-        quantity: an integer that determines if
-            the returned noun is single or plural.
-    Return: a randomly chosen noun.
+    Parameters
+        quantity: an integer that determines if the
+            returned verb is single or plural.
+        tense: a string that determines the verb conjugation,
+            either "past", "present" or "future".
+    Return: a randomly chosen verb.
     """
+    
+    if tense.lower() == "past":
+        past = [ "drank", "ate", "grew", "laughed", "thought",
+        "ran", "slept", "talked", "walked", "wrote"]
+        past_verb = random.choice(past)
+        return past_verb
+    elif tense.lower() == "present" and quantity  == 1:
+        present = [ "drinks", "eats", "grows", "laughs", "thinks",
+        "runs", "sleeps", "talks", "walks", "writes"]
+        present_verb = random.choice(present)
+        return present_verb
+    elif tense.lower() == "present" and quantity != 1:
+        present = [ "drink", "eat", "grow", "laugh", "think",
+        "run", "sleep", "talk", "walk", "write"]
+        present_verb = random.choice(present)
+        return present_verb
+    elif tense.lower() == "future":
+        future = ["will drink", "will eat", "will grow", "will laugh",
+        "will think", "will run", "will sleep", "will talk",
+        "will walk", "will write"]
+        future_verb = random.choice(future)
+        return future_verb
+    
     
 main()
