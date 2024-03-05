@@ -4,10 +4,7 @@ def main():
     """
     This is the main app.
     """
-    
-    words = ["boy", "girl", "cat", "dog", "bird", "house"]
-    
-    words = random.choice(words)
+        
     print(make_sentence(1, "past"))
     print(make_sentence(1, "present"))
     print(make_sentence(1, "future"))
@@ -24,10 +21,12 @@ def make_sentence(quantity, tense):
     """
     if quantity == 1:
         determiner = get_determiner(1)
-        noun = get_noun(quantity)
+        noun = get_noun(1)
+        preposition = get_prepositional_phrase(1)
     else:
         determiner = get_determiner(quantity)
         noun = get_noun(quantity)
+        preposition = get_prepositional_phrase(quantity)
         # Get a list of verbs
     
     if tense == "past":
@@ -39,7 +38,7 @@ def make_sentence(quantity, tense):
     elif tense == "future":
         verb = get_verb(quantity, "future")
         
-    return f"{determiner.capitalize()} {noun} {verb}."
+    return f"{determiner.capitalize()} {noun} {verb} {preposition}."
         
         
         
@@ -143,6 +142,49 @@ def get_verb(quantity, tense):
         "will walk", "will write"]
         future_verb = random.choice(future)
         return future_verb
-    
+
+    # Add Get Preposition Functions Below and call within the main function above.
+def get_preposition():
+    """
+    Return a randomly chosen preposition
+    from this list of prepositions:
+        "about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"
+
+    Return: a randomly chosen preposition.
+    """
+    preposition_list = ["about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"]
+    preposition = random.choice(preposition_list)
+    return preposition
+        
+def get_prepositional_phrase(quantity):
+    """
+    Build and return a prepositional phrase composed
+    of three words: a preposition, a determiner, and a
+    noun by calling the get_preposition, get_determiner,
+    and get_noun functions.
+
+    Parameter
+        quantity: an integer that determines if the
+            determiner and noun in the prepositional
+            phrase returned from this function should
+            be single or pluaral.
+    Return: a prepositional phrase.
+    """
+    noun = get_noun(quantity)
+    determiner = get_determiner(quantity)
+    preposition = get_preposition()
+    prepositional_phrase = f"{preposition} {determiner} {noun}"
+            
+    return prepositional_phrase
     
 main()
