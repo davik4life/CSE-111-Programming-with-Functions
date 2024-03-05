@@ -23,10 +23,14 @@ def make_sentence(quantity, tense):
         determiner = get_determiner(1)
         noun = get_noun(1)
         preposition = get_prepositional_phrase(1)
+        adverb = get_adverb()
+        adjective = get_adjective()
     else:
         determiner = get_determiner(quantity)
         noun = get_noun(quantity)
         preposition = get_prepositional_phrase(quantity)
+        adverb = get_adverb()
+        adjective = get_adjective()
         # Get a list of verbs
     
     if tense == "past":
@@ -38,8 +42,7 @@ def make_sentence(quantity, tense):
     elif tense == "future":
         verb = get_verb(quantity, "future")
         
-    return f"{determiner.capitalize()} {noun} {verb} {preposition}."
-        
+    return f"{determiner.capitalize()} {adjective} {noun} {preposition} {adverb} {verb}."        
         
         
         
@@ -163,8 +166,9 @@ def get_preposition():
         "from", "in", "into", "near", "of",
         "off", "on", "onto", "out", "over",
         "past", "to", "under", "with", "without"]
-    preposition = random.choice(preposition_list)
-    return preposition
+    preposition1 = random.choice(preposition_list)
+    preposition2 = random.choice(preposition_list)
+    return f"{preposition1} {preposition2}"
         
 def get_prepositional_phrase(quantity):
     """
@@ -184,7 +188,31 @@ def get_prepositional_phrase(quantity):
     determiner = get_determiner(quantity)
     preposition = get_preposition()
     prepositional_phrase = f"{preposition} {determiner} {noun}"
-            
+                
     return prepositional_phrase
+
+def get_adjective():
+    """
+    Builds and return the adjective within the sentence generated.
+    The adjectives are "big", "tall", "little", "short". 
+    """
+    
+    adjectives = ["big", "tall", "little", "short"]
+    
+    adjective = random.choice(adjectives)
+    
+    return adjective
+
+def get_adverb():
+    """
+    Builds and return the adverb within the sentence generated.
+    The adjectives are  "quickly", "slowly", "very carefully", "swiftly"
+    """
+    
+    adverbs = ["quickly", "slowly", "very carefully", "swiftly"]
+    
+    adverb = random.choice(adverbs)
+    
+    return adverb
     
 main()
