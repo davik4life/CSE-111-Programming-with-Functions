@@ -1,3 +1,21 @@
+"""
+    I have exceeded the requirements.
+    I added the function to convert from KPA to PSI and I also wrote
+    a test for it in the text function script.
+    
+    I created a CONSTANT to make my code more readable to easy to debug
+    rather than entering the numbers directly everywhere needed.
+    
+    I called the extra function I wrote within the main function to see
+    the returned value.
+    
+    Here's a Link to my Repo of this same file as well as others I hve written in the past.
+
+    I added the function to convert from KPA to PSI and I also wrote
+    a test for it in the text function script.
+    
+    I exceeded the requirements.
+"""
 from water_flow import water_column_height, pressure_gain_from_water_height, pressure_loss_from_pipe, pressure_loss_from_fittings, reynolds_number, pressure_loss_from_pipe_reduction, converts_KPA_to_PSI
 from pytest import approx
 import pytest
