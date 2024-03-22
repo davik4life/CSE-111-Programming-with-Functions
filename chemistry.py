@@ -18,7 +18,6 @@ def main():
     # chemical formula given by the user to a compound
     # list that stores element symbols and the quantity
     # of atoms of each element in the molecule.
-    
     parsed_formula = parse_formula(get_chemical_formula, make_table)
 
     # Call the compute_molar_mass function to compute the
@@ -31,7 +30,6 @@ def main():
     
 
     # Print the molar mass.
-    
     print(f"{total_molar_mass} grams/mole")
 
     # Print the number of moles.
@@ -177,10 +175,12 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
         # Get the element's name from its symbol using the
         # "atomic_name" key in the periodic_table_dict.
         # Get the atomic mass for the symbol from the dictionary.
-        atomic_mass = periodic_table_dict[symbol][1]        
+        atomic_mass = periodic_table_dict[symbol][ATOMIC_MASS_INDEX]   
+             
         # Multiply the atomic mass by the quantity.
         # Add the product into the total molar mass.
         total_molar_mass += atomic_mass * quantity
+        
     # Return the total molar mass.
     return total_molar_mass
 
