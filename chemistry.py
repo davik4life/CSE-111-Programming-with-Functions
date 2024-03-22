@@ -172,8 +172,6 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
     
     total_molar_mass = 0
     for symbol, quantity in symbol_quantity_list:
-        # Get the element's name from its symbol using the
-        # "atomic_name" key in the periodic_table_dict.
         # Get the atomic mass for the symbol from the dictionary.
         atomic_mass = periodic_table_dict[symbol][ATOMIC_MASS_INDEX]   
              
