@@ -28,12 +28,20 @@ def main():
     # Compute the number of moles in the sample.
     num_moles = get_chemical_sample / total_molar_mass
     
+    # Get formula name.
+    formula_name = get_formular_name(get_chemical_formula, known_molecules_dict)
+        
 
     # Print the molar mass.
     print(f"{total_molar_mass} grams/mole")
 
     # Print the number of moles.
     print(f"{num_moles:.5f} moles")
+    
+    # Print the Formula Name.
+    print(f"Formula Name: {formula_name}")
+    
+    # get_formular_name
         
 def make_periodic_table():
     periodic_table_dict = {
@@ -136,7 +144,6 @@ def make_periodic_table():
     
     return periodic_table_dict
     
-    
 # Indexes for inner lists in the periodic table
 NAME_INDEX = 0
 ATOMIC_MASS_INDEX = 1
@@ -181,6 +188,45 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
         
     # Return the total molar mass.
     return total_molar_mass
+
+
+known_molecules_dict = {
+        #"Formula": Molecules Name 
+        "Al2O3": "aluminum oxide",
+        "CH3OH": "methanol",
+        "C2H6O": "ethanol",
+        "C2H5OH": "ethanol",
+        "C3H8O": "isopropyl alcohol",
+        "C3H8": "propane",
+        "C4H10": "butane",
+        "C6H6": "benzene",
+        "C6H14": "hexane",
+        "C8H18": "octane",
+        "CH3(CH2)6CH3": "octane",
+        "C13H18O2": "ibuprofen",
+        "C13H16N2O2": "melatonin",
+        "Fe2O3": "iron oxide",
+        "FeS2": "iron pyrite",
+        "H2O": "water"
+    }
+
+def get_formular_name(formula, known_molecules_dict):
+    """Try to find formula in the known_molecules_dict.
+    If formula is in the known_molecules_dict, return
+    the name of the chemical formula; otherwise return
+    "unknown compound".
+
+    Parameters
+        formula is a string that contains a chemical formula
+        known_molecules_dict is a dictionary that contains
+            known chemical formulas and their names
+    Return: the name of a chemical formula
+    """
+    if formula in known_molecules_dict:
+        return known_molecules_dict[formula]
+    else:
+        return "unknown compound"
+    
 
 if __name__ == "__main__":    
     main()
