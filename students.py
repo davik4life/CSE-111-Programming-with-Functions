@@ -3,12 +3,25 @@ import csv
 def main():
     file_name = 'students.csv'
     students_dict = read_dictionary(file_name)
+    I_NUMBER_LENGTH = 9
 
     i_number = input("Please enter an I-Number (xxxxxxxxx):")
-    if i_number in students_dict:
-        print("Student name:", students_dict[i_number])
+    
+    # Remove any dashes found in the entry
+    i_number = i_number.replace("-", "")
+    
+    # Check for the length of the input before proceeding.
+    if len(i_number) < I_NUMBER_LENGTH:
+        print("Invalid I-Number: too few digits")
+    elif len(i_number) > I_NUMBER_LENGTH:
+        print("Invalid I-Number: too many digits")
+    elif i_number.isdigit() == False:
+        print("Invalid Number")
     else:
-        print("No such student")
+        if i_number in students_dict:
+            print("Student name:", students_dict[i_number])
+        else:
+            print("No such student")
         
         
 def read_dictionary(filename):
