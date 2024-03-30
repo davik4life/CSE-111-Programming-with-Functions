@@ -57,7 +57,7 @@ def main():
                         name = products_dict[product_name][PRODUCT_NAME_INDEX]
                         total = 0
                         # if (f"{current_datetime:%A}" == "Saturday") or (f"{current_datetime:%A}" == "Wednesday"):
-                        if (f"{current_datetime:%A}" == "Tuesday") or (f"{current_datetime:%A}" == "Wednesday") or (f"{current_datetime:%X}" > "11:00:00"):
+                        if (f"{current_datetime:%A}" == "Tuesday") or (f"{current_datetime:%A}" == "Wednesday") or (f"{current_datetime:%X}" < "11:00:00"):
                             discount = (float(price) * DISCOUNT) / PERCENTAGE
                             discounted_price = float(price) - discount
                             summed_price = 0
