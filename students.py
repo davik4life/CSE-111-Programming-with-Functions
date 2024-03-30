@@ -40,7 +40,7 @@ def read_dictionary(filename):
         # Skip the header row
         next(reader)
         
-        # Iterate thr entire csv file and organize it into a dictionary.
+        # Iterate the entire csv file and organize it into a dictionary.
         for row in reader:
             i_number, name = row
             students_dict[i_number] = name
