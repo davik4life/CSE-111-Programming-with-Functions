@@ -13,11 +13,11 @@ CSE 111 Proposal for a Student Chosen Program
 Temple Recommend Renewal Reminder. ("TRRR" for short.)
 
 2. What real-world problem will your program address or help to solve?
-As a High-Councilor, during our recent meeting with the stake presidency,
-This was discussed as a concern that many at times, members to forget that 
-their Temple recommend was close to expiring or had already expired without
-notice. This is an issue, and since then, I have been counting on a way to make
-it easeir for members to always be reminder, 6 months to the expiry of their
+As I currently serve as a High-Councilor, during our recent meeting with the Stake presidency,
+This was discussed as a concern that more that often, members do forget that 
+their Temple recommend is close to expiring or had already expired without
+notice. This is an issue, and since then, I have been thinking of a way to make
+it easier for members to always be reminder, atleast, six(6) months to the expiry of their
 Temple recommend or as setup in the App, but not later or lesser that 6 Months.
 
 3. What will you learn from developing this program?
@@ -45,5 +45,17 @@ to come in handy to be effective and work as planned.
     a result. Therefore, you should write most of your program functions
     to have parameters and return a result.)
 
+    main function
+    reminder function
+    set_date_and_time function
+    And maybe some more...
+
+
+
 6. List the names of the test functions you will write.
+
+    
+    test_reminder function
+    test_set_date_and_time function
+    And maybe some more...
 
