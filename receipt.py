@@ -20,6 +20,7 @@ def main():
         subtotal = 0
         SALES_TAX = 6
         PERCENTAGE = 100
+        DISCOUNT = 10
         current_datetime = datetime.now()
         
         
@@ -50,12 +51,26 @@ def main():
                 
                 try:            
                     if product_name in products_dict:
+                        # Write code to discount the product prices by 10% if today 
+                        # is Tuesday or Wednesday.
                         price = products_dict[product_name][PRODUCT_PRICE_INDEX]
                         name = products_dict[product_name][PRODUCT_NAME_INDEX]
-                        subtotal += quantity_converted * float(price)
-                        sales_tax = subtotal * SALES_TAX / PERCENTAGE
-                        total = sales_tax + subtotal
-                        print(f"{name}: {quantity} @ {price}")
+                        total = 0
+                        # if (f"{current_datetime:%A}" == "Saturday") or (f"{current_datetime:%A}" == "Wednesday"):
+                        if (f"{current_datetime:%A}" == "Tuesday") or (f"{current_datetime:%A}" == "Wednesday") or (f"{current_datetime:%X}" > "11:00:00"):
+                            discount = (float(price) * DISCOUNT) / PERCENTAGE
+                            discounted_price = float(price) - discount
+                            summed_price = 0
+                            summed_price += float(discounted_price)
+                            subtotal += quantity_converted * float(discounted_price)
+                            sales_tax = (subtotal * SALES_TAX) / PERCENTAGE
+                            total += sales_tax + subtotal
+                            print(f"{name}: {quantity} @ {discounted_price}")
+                        else:
+                            subtotal += quantity_converted * float(price)
+                            sales_tax = (subtotal * SALES_TAX) / PERCENTAGE
+                            total += sales_tax + subtotal
+                            print(f"{name}: {quantity} @ {price}")
                     else:
                         print(f"Product {product_name} not found.")
                 except KeyError:
@@ -68,7 +83,9 @@ def main():
         print(f"Total: {total:.2f}")
         print()
         print(f"Thank you for shopping at the {STORE_NAME}.")
-        print(f"{current_datetime:%c }")
+        print(f"{current_datetime:%c}")
+        print()
+        print("Thank You for shopping with us. Please complete a survey [[https://webtekmasters.com/contact-us/ | My Portfolio]]")
     except FileNotFoundError:
         print(f"File '{filename}' not found.")
     except PermissionError:
